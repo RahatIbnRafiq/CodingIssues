@@ -1,0 +1,15 @@
+1. Rendering Problem in the layout while previewing. Always use @+id to declare id for a component in a layout. Stupid stupid problem.
+2. Setting repeating alarm: 
+alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 5000,PendingIntent.getService(this, 1, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT));
+3.SQLite Cursor:
+Instead of using column index manually, use this: cursor.getString(cursor.getColumnIndex(columnName))
+4. SQLite cursor loop through all results of a query:
+If(cursor.moveFirst())
+{
+		do
+{
+}while(cursor.movenext());
+}
+5. Remove notification after clicking:
+mBuilder.setAutoCancel(true);
+
