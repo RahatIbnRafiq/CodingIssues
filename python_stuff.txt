@@ -1,0 +1,5 @@
+1. Reading csv files into dictionary for OS-X
+with open(constants.LABELED_DATA_PATH_INSTAGRAM+"/"+filename, 'rU') as csvfile:
+                csvreader = csv.DictReader(csvfile)
+                for row in csvreader:
+                    print(row["question2"])
