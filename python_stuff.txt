@@ -6,3 +6,28 @@ with open(constants.LABELED_DATA_PATH_INSTAGRAM+"/"+filename, 'rU') as csvfile:
 2. string representation of a list to a list:
            import ast
            likes = ast.literal_eval(tokens[1])
+
+3. connect to remote server's mongo:
+from sshtunnel import SSHTunnelForwarder
+import pymongo
+import pprint
+
+MONGO_HOST = "IP OF THE SERVER"
+MONGO_DB = "CyberSafetyApp"
+MONGO_USER = "fuck this shit"
+MONGO_PASS = "fuck this shit"
+
+server = SSHTunnelForwarder(
+    MONGO_HOST,
+    ssh_username=MONGO_USER,
+    ssh_password=MONGO_PASS,
+    remote_bind_address=('127.0.0.1', 27017)
+)
+
+server.start()
+
+client = pymongo.MongoClient('127.0.0.1', server.local_bind_port) # server.local_bind_port is assigned local port
+db = client[MONGO_DB]
+pprint.pprint(db.collection_names())
+
+server.stop()
