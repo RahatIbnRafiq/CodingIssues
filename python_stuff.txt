@@ -3,3 +3,6 @@ with open(constants.LABELED_DATA_PATH_INSTAGRAM+"/"+filename, 'rU') as csvfile:
                 csvreader = csv.DictReader(csvfile)
                 for row in csvreader:
                     print(row["question2"])
+2. string representation of a list to a list:
+           import ast
+           likes = ast.literal_eval(tokens[1])
